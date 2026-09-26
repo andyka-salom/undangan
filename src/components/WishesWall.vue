@@ -25,49 +25,60 @@ function formatDate(iso) {
 </script>
 
 <template>
-  <section v-if="wishes.length" class="section-pad bg-ivory bg-batik-light relative overflow-hidden" v-reveal>
-    <div class="mx-auto max-w-xl">
+  <section v-if="wishes.length" class="section-pad text-ivory-100 relative overflow-hidden" v-reveal>
+    
+    <!-- Top & Bottom Gold Borders -->
+    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-gold-600 via-gold-300 to-gold-600 opacity-70"></div>
+    <div class="absolute bottom-0 inset-x-0 h-1.5 bg-gradient-to-r from-gold-600 via-gold-300 to-gold-600 opacity-70"></div>
+
+    <div class="mx-auto max-w-xl relative z-10">
       <!-- Section Title -->
-      <div class="mb-2 flex items-center justify-center gap-3 text-gold-600 opacity-80 text-center">
-        <span class="h-px w-12 bg-gold-500/40"></span>
-        <span class="font-cinzel text-xs font-bold uppercase tracking-widest text-gold-700">Untaian Doa</span>
-        <span class="h-px w-12 bg-gold-500/40"></span>
+      <div class="mb-8 text-center">
+        <p class="font-cinzel text-xs font-bold tracking-[0.3em] text-gold-700 uppercase mb-3">Untaian Doa</p>
+        <div class="flex items-center justify-center gap-4">
+          <span class="h-px w-16 bg-gradient-to-r from-transparent to-gold-400"></span>
+          <span class="text-gold-600 text-lg">✦</span>
+          <span class="h-px w-16 bg-gradient-to-l from-transparent to-gold-400"></span>
+        </div>
       </div>
 
-      <h2 class="text-center font-cinzel text-3xl font-extrabold text-emerald-950 sm:text-4xl">
+      <h2 class="text-center font-cinzel text-3xl font-extrabold text-gold-gradient sm:text-4xl drop-shadow-sm">
         Dinding Doa Restu
       </h2>
-      <p class="mt-1 text-center text-xs text-gold-700 font-semibold">
-        {{ wishes.length }} ucapan &amp; doa telah disampaikan oleh para tamu
+      <p class="mt-3 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-gold-700">
+        {{ wishes.length }} ucapan &amp; doa telah disampaikan
       </p>
 
       <!-- Wishes Scrollable Container -->
-      <div class="thin-scroll mx-auto mt-8 max-h-[460px] space-y-3.5 overflow-y-auto pr-1.5">
+      <div class="thin-scroll mx-auto mt-10 max-h-[500px] space-y-4 overflow-y-auto pr-2 relative">
         <div
           v-for="wish in wishes"
           :key="wish.id"
-          class="glass-card-light rounded-2xl p-4 text-left shadow-sm border border-gold-400/30 transition-transform hover:-translate-y-0.5"
+          class="glass-card-dark rounded-3xl p-5 text-left shadow-md border-2 border-gold-400/30 transition-transform hover:-translate-y-1 bg-emerald-950/40 backdrop-blur-sm"
         >
-          <div class="flex items-center justify-between gap-3">
+          <div class="flex items-start justify-between gap-3">
             <div class="flex items-center gap-3">
               <!-- Avatar Medallion -->
-              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-950 font-cinzel text-sm font-bold text-gold-400 shadow-sm border border-gold-400/40">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-900 to-emerald-950 font-cinzel text-sm font-bold text-gold-400 shadow-inner border border-gold-400/50">
                 {{ wish.name?.charAt(0)?.toUpperCase() || 'T' }}
               </div>
               <div>
-                <p class="font-cinzel text-sm font-bold text-emerald-950">{{ wish.name }}</p>
-                <p class="text-[10px] text-gold-700/80">{{ formatDate(wish.createdAt) }}</p>
+                <p class="font-cinzel text-[15px] font-bold text-ivory-100">{{ wish.name }}</p>
+                <p class="text-[10px] font-bold tracking-wider text-gold-600 mt-0.5">{{ formatDate(wish.createdAt) }}</p>
               </div>
             </div>
 
-            <span class="shrink-0 rounded-full border px-3 py-1 font-cinzel text-[10px] font-bold" :class="badgeClass(wish.attendance)">
+            <span class="shrink-0 rounded-full border px-3 py-1 font-cinzel text-[10px] font-bold shadow-sm" :class="badgeClass(wish.attendance)">
               {{ badgeText(wish.attendance) }}
             </span>
           </div>
 
-          <p v-if="wish.message" class="mt-3 text-xs leading-relaxed text-emerald-900/90 italic pl-1 border-l-2 border-gold-400/40">
-            "{{ wish.message }}"
-          </p>
+          <div class="mt-4 pl-3 relative">
+             <span class="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-400 to-transparent"></span>
+             <p class="text-[13px] leading-relaxed text-ivory-200 font-medium italic">
+               "{{ wish.message }}"
+             </p>
+          </div>
         </div>
       </div>
     </div>

@@ -8,13 +8,8 @@ defineEmits(['open'])
 
 <template>
   <section
-    class="relative flex min-h-[100svh] flex-col items-center justify-between overflow-hidden bg-emerald-950 px-6 py-12 text-ivory-100 bg-batik-dark"
+    class="relative flex min-h-[100svh] flex-col items-center justify-between overflow-hidden px-6 py-12 text-ivory-100"
   >
-    <!-- Background Image & Ambient Ornaments -->
-    <div class="pointer-events-none absolute inset-0 z-0 opacity-20">
-      <img src="/images/gunungan-gold.jpg" alt="Gunungan Backdrop" class="h-full w-full object-cover object-center scale-105 animate-pulseGlow" />
-      <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/70 to-emerald-950/90"></div>
-    </div>
 
     <!-- Gold Corner Frame Ornaments -->
     <div class="pointer-events-none absolute top-4 left-4 z-10 opacity-70">

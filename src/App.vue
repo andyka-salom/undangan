@@ -44,7 +44,7 @@ onErrorCaptured((err) => {
     </p>
     <pre class="mt-2 max-w-lg overflow-x-auto rounded-lg bg-emerald-950 p-4 text-left text-xs text-ivory-100">{{ fatalError }}</pre>
   </div>
-  <div v-else class="min-h-screen bg-ivory selection:bg-gold-500 selection:text-emerald-950">
+  <div v-else class="min-h-screen bg-batik-dark selection:bg-gold-500 selection:text-emerald-950">
     <transition
       enter-active-class="transition-opacity duration-700"
       leave-active-class="transition-opacity duration-700"

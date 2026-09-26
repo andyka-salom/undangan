@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <footer class="bg-emerald-950 bg-batik-dark px-6 py-16 text-center text-ivory-100 border-t border-gold-400/30 relative overflow-hidden" v-reveal>
+  <footer class="px-6 py-16 text-center text-ivory-100 border-t border-gold-400/30 relative overflow-hidden" v-reveal>
     <div class="mx-auto max-w-md relative z-10">
       <!-- Ornaments -->
       <div class="mb-4 flex items-center justify-center gap-3 text-gold-400 opacity-80">
