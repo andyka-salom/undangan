@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  @apply bg-ivory text-emerald-900 font-body antialiased;
+  overflow-x: hidden;
+  background-color: #f7f3e9;
+}
+
+::selection {
+  background: #d4af37;
+  color: #051b18;
+}
+
+/* Gold Text Gradient Shimmer */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-solid {
+  color: #d4af37;
+}
+
+/* Sacred Traditional Border */
+.gold-border-box {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 20px -2px rgba(10, 42, 38, 0.15), inset 0 0 15px rgba(212, 175, 55, 0.05);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Subtle Batik Motif Watermark Background */
+.bg-batik-dark {
+  background-color: #0a2a26;
+  background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px),
+                    radial-gradient(rgba(212, 175, 55, 0.08) 1px, #0a2a26 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.bg-batik-light {
+  background-color: #f7f3e9;
+  background-image: radial-gradient(rgba(10, 42, 38, 0.06) 1px, transparent 1px),
+                    radial-gradient(rgba(212, 175, 55, 0.1) 1px, #f7f3e9 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+/* Glass Card Dark */
+.glass-card-dark {
+  background: rgba(10, 42, 38, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* Glass Card Light */
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.section-pad {
+  @apply px-4 py-16 sm:px-6 sm:py-24;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Custom Scrollbar */
+.thin-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: rgba(10, 42, 38, 0.05);
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 999px;
+}
+
