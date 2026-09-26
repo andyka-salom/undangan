@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onErrorCaptured } from 'vue'
+import { ref, onErrorCaptured, nextTick } from 'vue'
 import { config } from './data/config'
 import { useGuest } from './composables/useGuest'
 
@@ -9,8 +9,6 @@ import QuoteSection from './components/QuoteSection.vue'
 import ChildProfile from './components/ChildProfile.vue'
 import EventDetails from './components/EventDetails.vue'
 import Gallery from './components/Gallery.vue'
-import DigitalGift from './components/DigitalGift.vue'
-import RsvpForm from './components/RsvpForm.vue'
 import WishesWall from './components/WishesWall.vue'
 import AppFooter from './components/AppFooter.vue'
 import MusicToggle from './components/MusicToggle.vue'
@@ -18,10 +16,14 @@ import MusicToggle from './components/MusicToggle.vue'
 const { guestName } = useGuest()
 const opened = ref(false)
 const fatalError = ref('')
+const musicRef = ref(null)
 
 function openInvitation() {
   opened.value = true
   document.body.style.overflow = 'auto'
+  nextTick(() => {
+    musicRef.value?.play()
+  })
 }
 
 document.body.style.overflow = 'hidden'
@@ -65,6 +67,7 @@ onErrorCaptured((err) => {
       <QuoteSection
         :arabic="config.quote.arabic"
         :translation="config.quote.translation"
+        :javanese="config.quote.javanese"
         :source="config.quote.source"
       />
       <ChildProfile
@@ -84,16 +87,15 @@ onErrorCaptured((err) => {
         :dresscode="config.event.dresscode"
       />
       <Gallery :photos="config.gallery" />
-      <DigitalGift :gift-data="config.digitalGift" />
-      <RsvpForm
-        :whatsapp-number="config.whatsapp.number"
-        :whatsapp-enabled="config.whatsapp.enabled"
-        :child-nickname="config.child.nickname"
-      />
       <WishesWall />
       <AppFooter :closing-message="config.host.closingMessage" :family-name="config.host.familyName" />
     </main>
 
-    <MusicToggle v-if="opened && config.music.enabled" :src="config.music.src" auto-start />
+    <!-- Music Player ALWAYS available so user gesture triggers audio playback smoothly -->
+    <MusicToggle
+      v-if="config.music.enabled"
+      ref="musicRef"
+      :src="config.music.src"
+    />
   </div>
 </template>
